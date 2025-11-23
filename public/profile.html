@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profile • RegiLogin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=1" />
+  <link rel="alternate icon" type="image/svg+xml" href="../assets/icon.svg?v=1" />
+  <link rel="shortcut icon" type="image/svg+xml" href="../assets/favicon.svg?v=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="auth-page">
+  <nav class="navbar navbar-warm shadow-sm">
+    <div class="container-fluid container-lg px-3 px-md-4">
+      <a class="navbar-brand fw-bold" href="profile.html">RegiLogin</a>
+      <div class="d-flex">
+        <ul class="navbar-nav ms-auto align-items-center gap-2 gap-lg-3 flex-row">
+          <li class="nav-item"><button id="logoutBtn" class="btn btn-outline-light btn-sm">Logout</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container-fluid container-lg py-4 py-md-5 px-3 px-md-4">
+    <!-- User Profile Header Card -->
+    <div class="row justify-content-center mb-4">
+      <div class="col-12 col-xl-10">
+        <div class="card shadow-lg border-0 auth-card">
+          <div class="card-body p-4 p-md-5">
+            <div class="row align-items-center">
+              <div class="col-auto text-center">
+                <div class="position-relative d-inline-block">
+                  <div class="profile-avatar-wrapper rounded-circle shadow-sm bg-white d-flex align-items-center justify-content-center" style="width: 120px; height: 120px;">
+                    <div id="userAvatar" class="rounded-circle d-flex align-items-center justify-content-center text-white fw-bold" style="width: 110px; height: 110px; font-size: 2.5rem; background: linear-gradient(135deg, #31694E 0%, #658C58 50%, #BBC863 100%);">
+                      <span id="avatarInitials">U</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="ms-3">
+                  <h1 class="h3 mb-2 fw-bold" id="displayUsername">Username</h1>
+                  <p class="mb-2 text-muted d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="me-2" viewBox="0 0 16 16">
+                      <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
+                    </svg>
+                    <span id="displayEmail">user@example.com</span>
+                  </p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="badge" id="ageDisplay" style="display: none; background: linear-gradient(135deg, #658C58, #BBC863); color: white;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 4a.905.905 0 0 0-.9.995l.35 3.507a.552.552 0 0 0 1.1 0l.35-3.507A.905.905 0 0 0 8 4zm.002 6a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                      </svg>
+                      <span id="ageBadgeText">Age: —</span>
+                    </span>
+                    <span class="badge" id="contactDisplay" style="display: none; background: linear-gradient(135deg, #BBC863, #F0E491); color: #31694E;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="me-1" viewBox="0 0 16 16">
+                        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                      </svg>
+                      <span id="contactBadgeText">Contact</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile Details Section -->
+    <div class="row justify-content-center">
+      <div class="col-12 col-xl-10">
+        <div class="row g-3 g-md-4">
+          <!-- Profile Information Display -->
+          <div class="col-12 col-lg-5">
+            <div class="card shadow-lg border-0 auth-card h-100">
+              <div class="card-body p-4">
+                <h2 class="h5 mb-4 fw-bold d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="me-2" style="color: #658C58;" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                  </svg>
+                  Profile Information
+                </h2>
+                <div id="profileInfoDisplay">
+                  <div class="mb-3 pb-3 border-bottom">
+                    <label class="text-muted small fw-semibold d-block mb-1">Date of Birth</label>
+                    <p class="mb-0 fw-medium" id="displayDob">Not set</p>
+                  </div>
+                  <div class="mb-3 pb-3 border-bottom">
+                    <label class="text-muted small fw-semibold d-block mb-1">Age</label>
+                    <p class="mb-0 fw-medium" id="displayAge">Not set</p>
+                  </div>
+                  <div class="mb-3 pb-3 border-bottom">
+                    <label class="text-muted small fw-semibold d-block mb-1">Contact</label>
+                    <p class="mb-0 fw-medium text-break" id="displayContact">Not set</p>
+                  </div>
+                  <div>
+                    <label class="text-muted small fw-semibold d-block mb-1">Address</label>
+                    <p class="mb-0 fw-medium" id="displayAddress">Not set</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Edit Form -->
+          <div class="col-12 col-lg-7">
+            <div class="card shadow-lg border-0 auth-card h-100">
+              <div class="card-body p-4">
+                <h2 class="h5 mb-4 fw-bold d-flex align-items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="me-2" style="color: #658C58;" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                  </svg>
+                  Edit Profile
+                </h2>
+                <form id="profileForm" novalidate>
+                  <div class="row g-3">
+                    <div class="col-12 col-sm-6">
+                      <label class="form-label fw-semibold" for="dob">Date of Birth</label>
+                      <input type="date" class="form-control form-control-lg" id="dob" />
+                    </div>
+                    <div class="col-12 col-sm-6">
+                      <label class="form-label fw-semibold" for="age">Age <small class="text-muted fw-normal">(auto-calculated)</small></label>
+                      <input type="number" class="form-control form-control-lg bg-light" id="age" min="1" max="120" placeholder="Auto-filled from DOB" readonly />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label fw-semibold" for="contact">Contact</label>
+                      <input type="text" class="form-control form-control-lg" id="contact" maxlength="64" placeholder="Phone or contact info" />
+                    </div>
+                    <div class="col-12">
+                      <label class="form-label fw-semibold" for="address">Address</label>
+                      <textarea class="form-control form-control-lg" id="address" rows="3" maxlength="256" placeholder="Enter your address"></textarea>
+                    </div>
+                  </div>
+                  <div class="d-flex flex-column flex-sm-row justify-content-end gap-2 gap-sm-3 mt-4">
+                    <button type="button" class="btn btn-outline-secondary btn-lg order-2 order-sm-1" id="btnReset" title="Clear fields">Reset</button>
+                    <button type="submit" class="btn btn-brand btn-lg order-1 order-sm-2" id="btnSave">
+                      <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true" id="saveSpinner"></span>
+                      <span>Save Changes</span>
+                    </button>
+                  </div>
+                </form>
+                <div id="profileAlert" class="alert mt-3 d-none" role="alert" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="../js/profile.js"></script>
+</body>
+</html>

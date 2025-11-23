@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register • RegiLogin</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg?v=1" />
+  <link rel="alternate icon" type="image/svg+xml" href="../assets/icon.svg?v=1" />
+  <link rel="shortcut icon" type="image/svg+xml" href="../assets/favicon.svg?v=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body class="auth-page">
+  <nav class="navbar navbar-warm shadow-sm">
+    <div class="container-fluid container-lg px-3 px-md-4">
+      <a class="navbar-brand fw-bold" href="login.html">RegiLogin</a>
+      <div class="d-flex">
+        <ul class="navbar-nav ms-auto align-items-center gap-2 gap-lg-3 flex-row">
+          <li class="nav-item"><a class="btn btn-outline-light btn-sm" href="login.html">Login</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-7 col-lg-6 col-xl-5">
+        <div class="card shadow-lg auth-card">
+          <div class="card-body p-4 p-md-5">
+            <div class="mb-4 text-center">
+              <h1 class="h3 mb-1">Create your account</h1>
+              <p class="text-secondary mb-0">Join us – it’s quick and easy</p>
+            </div>
+            <form id="registerForm" novalidate>
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" required minlength="3" maxlength="32" pattern="^[a-zA-Z0-9_.-]{3,32}$" autocomplete="username" aria-required="true" />
+                <div class="form-text">3–32 chars: letters, numbers, _ . -</div>
+                <div class="invalid-feedback">Username format invalid.</div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required autocomplete="email" aria-required="true" />
+                <div class="invalid-feedback">Enter a valid email.</div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                  <input type="password" class="form-control" id="password" required minlength="8" autocomplete="new-password" aria-required="true" placeholder="Create a password" />
+                  <button class="btn btn-outline-secondary" type="button" id="toggleRegPassword" aria-label="Show password">
+                    <span class="pw-eye" aria-hidden="true">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12Z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+                <div class="form-text small">Use at least 8 characters.</div>
+                <div class="invalid-feedback">Password must be 8+ characters.</div>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-brand btn-lg" id="btnRegister">
+                  <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true" id="regSpinner"></span>
+                  <span>Register</span>
+                </button>
+              </div>
+            </form>
+            <div id="registerAlert" class="alert mt-3 d-none" role="alert" aria-live="polite"></div>
+            <p class="text-center text-muted mt-4 mb-0 small">Already have an account? <a href="login.html" class="link-secondary fw-semibold">Sign in</a></p>
+            <p class="text-center text-muted mt-2 mb-0 small d-none d-md-block">Warm theme for a welcoming first impression.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="../js/register.js"></script>
+</body>
+</html>
