@@ -1,10 +1,10 @@
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#3e3232;stop-opacity:1" />
-      <stop offset="33%" style="stop-color:#503c3c;stop-opacity:1" />
-      <stop offset="66%" style="stop-color:#7e6363;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#a87c7c;stop-opacity:1" />
+      <stop offset="0%" style="stop-color:#042a2b;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#5eb1bf;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#ef7b45;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d84727;stop-opacity:1" />
     </linearGradient>
   </defs>
   <rect width="32" height="32" rx="6" fill="url(#grad)"/>

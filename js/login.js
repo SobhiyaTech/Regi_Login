@@ -42,6 +42,13 @@
     const type = $password.attr('type') === 'password' ? 'text' : 'password';
     $password.attr('type', type);
     $togglePassword.attr('aria-label', type === 'password' ? 'Show password' : 'Hide password');
+    // brief blink feedback on the eye icon
+    const $eye = $togglePassword.find('.pw-eye');
+    if ($eye.length) {
+      $eye.addClass('blink');
+      // remove after animation completes (slightly longer than animation)
+      setTimeout(function(){ $eye.removeClass('blink'); }, 350);
+    }
   });
 
   $form.on('submit', function (e) {

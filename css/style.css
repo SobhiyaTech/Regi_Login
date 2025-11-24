@@ -1,20 +1,24 @@
 /* Minimal global styles to complement Bootstrap */
 :root {
-	/* ColorHunt palette: 896c6c, e5beb5, eee6ca, f5fae1 */
-	--brand:     #896c6c; /* warm mauve */
-	--muted:     #e5beb5; /* soft rose */
-	--cream:     #eee6ca; /* pale cream */
-	--pale:      #f5fae1; /* very light */
-	--text-dark: #2b2323; /* dark text for readability */
-	--text-light:#ffffff;
-}
-:root {
-	/* New ColorHunt palette: 3e3232, 503c3c, 7e6363, a87c7c */
-	--brand:     #3e3232; /* darkest */
-	--muted:     #503c3c; /* deep brown */
-	--cream:     #7e6363; /* warm mid */
-	--pale:      #a87c7c; /* light warm */
-	--text-dark: #1f1616; /* near-black for contrast */
+	/* User Coolors palette:
+	   1: #042a2b  deep teal
+	   2: #5eb1bf  teal
+	   3: #cdedf6  pale blue
+	   4: #ef7b45  orange
+	   5: #d84727  red-orange */
+	--brand-1: #042a2b;
+	--brand-2: #5eb1bf;
+	--brand-3: #cdedf6;
+	--brand-4: #ef7b45;
+	--brand-5: #d84727;
+	/* semantic variables used by the UI */
+	--brand: var(--brand-2);
+	--muted: var(--brand-3);
+	--accent: var(--brand-4);
+	--danger: var(--brand-5);
+	--cream:  rgba(255,255,255,0.96);
+	--pale:   #f7fbfc; /* very light neutral matching pale blue */
+	--text-dark: #071319;
 	--text-light:#ffffff;
 }
 body { background-color: var(--pale); color: var(--text-dark); }
@@ -33,34 +37,48 @@ form .form-control.is-valid { border-color: var(--muted); }
 /* Auth pages enhancements */
 .auth-page {
 	min-height: 100vh;
-	background: linear-gradient(135deg, var(--pale) 0%, var(--cream) 40%, var(--muted) 80%, var(--brand) 100%);
+	background: linear-gradient(135deg, var(--pale) 0%, var(--cream) 30%, var(--brand-2) 65%, var(--brand-1) 100%);
 	background-attachment: fixed;
 }
 .auth-page .navbar {
-	background: rgba(137,108,108,0.94) !important; /* uses --brand */
+	background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 60%) !important;
 	backdrop-filter: saturate(120%) blur(6px);
 }
-auth-card {
-	border-radius: 1rem;
-	box-shadow: 0 1rem 2rem rgba(43,35,35,0.08) !important;
+.auth-card {
+	border-radius: 1.5rem;
+	box-shadow: 0 1rem 2rem rgba(7,19,25,0.08) !important;
 	animation: fadeInUp .35s ease-out both;
+	overflow: hidden;
 }
-.auth-page .card .card-body {
+.auth-page .card .card-body,
+.auth-card .card-body {
 	background: rgba(255,255,255,0.95);
 	backdrop-filter: blur(6px);
+	border-radius: inherit;
+	overflow: hidden;
 }
 .auth-page .form-control:focus {
-	border-color: rgba(229,190,181,.9); /* --muted */
-	box-shadow: 0 0 0 .2rem rgba(229,190,181,.18);
+	border-color: rgba(94,177,191,0.9); /* brand-2 */
+	box-shadow: 0 0 0 .2rem rgba(94,177,191,0.12);
 }
 .pw-eye { display: inline-flex; align-items: center; line-height: 1; }
 
+/* Blink animation for password visibility toggle */
+@keyframes pwBlink {
+	0% { opacity: 1; transform: scale(1); }
+	50% { opacity: 0.25; transform: scale(0.95); }
+	100% { opacity: 1; transform: scale(1); }
+}
+.pw-eye.blink {
+	animation: pwBlink .28s ease-in-out both;
+}
+
 /* Themed Navbar */
 .navbar-warm {
-	background: linear-gradient(135deg, var(--brand) 0%, var(--muted) 50%, var(--cream) 100%);
+	background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--muted) 100%);
 	backdrop-filter: blur(10px) saturate(100%);
-	box-shadow: 0 0.5rem 1rem rgba(43,35,35,0.18);
-	border-bottom: 2px solid rgba(245,250,225,0.10);
+	box-shadow: 0 0.5rem 1rem rgba(7,19,25,0.18);
+	border-bottom: 2px solid rgba(255,255,255,0.06);
 }
 .navbar-warm .navbar-brand {
 	font-weight: 700;
@@ -103,14 +121,69 @@ auth-card {
 /* Brand button */
 .btn-brand {
 	color: var(--text-light);
-	background: linear-gradient(135deg, var(--muted), var(--brand));
+	background: linear-gradient(135deg, var(--brand-2), var(--brand-1));
 	border: none;
-	box-shadow: 0 4px 8px rgba(43,35,35,0.08);
+	box-shadow: 0 4px 12px rgba(7,19,25,0.08);
 }
 .btn-brand:hover, .btn-brand:focus {
 	color: var(--text-light);
-	background: linear-gradient(135deg, var(--brand), var(--muted));
-	box-shadow: 0 6px 12px rgba(43,35,35,0.12);
+	background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+	box-shadow: 0 6px 16px rgba(7,19,25,0.12);
+}
+
+/* Avatar and badge colors using the palette */
+#userAvatar {
+	transition: all 0.3s ease;
+	background: linear-gradient(135deg, var(--brand-2) 0%, var(--brand-1) 50%, var(--brand-3) 100%);
+	color: var(--text-light);
+}
+.badge-age {
+	background: linear-gradient(135deg, var(--brand-4), var(--brand-5));
+	color: var(--text-light);
+}
+.badge-contact {
+	background: linear-gradient(135deg, var(--brand-2), var(--muted));
+	color: var(--text-dark);
+}
+
+/* Welcome card: dark/black box using palette accents */
+.welcome-card {
+	position: relative;
+	background: linear-gradient(180deg, #000000 0%, rgba(4,42,43,0.85) 40%);
+	color: var(--text-light);
+	border-radius: 1.5rem;
+	overflow: hidden;
+	border: 1px solid rgba(94,177,191,0.06);
+}
+.welcome-card .card-body {
+	background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.25));
+	border-radius: inherit;
+	overflow: hidden;
+}
+.welcome-card .navbar-brand, .welcome-card h1, .welcome-card .h1, .welcome-card .h2 {
+	color: var(--text-light) !important;
+}
+.welcome-card .btn-brand {
+	background: linear-gradient(135deg, var(--brand-2), var(--brand-1));
+}
+.welcome-card .btn-outline-secondary {
+	color: var(--text-light);
+	border-color: rgba(255,255,255,0.08);
+}
+
+/* Avatar and badge colors using the palette */
+#userAvatar {
+	transition: all 0.3s ease;
+	background: linear-gradient(135deg, var(--brand-1) 0%, var(--brand-2) 50%, var(--brand-3) 100%);
+	color: var(--text-light);
+}
+.badge-age {
+	background: linear-gradient(135deg, var(--brand-3), var(--brand-2));
+	color: var(--text-light);
+}
+.badge-contact {
+	background: linear-gradient(135deg, var(--brand-7), var(--brand-8));
+	color: var(--text-light);
 }
 .btn-brand:disabled {
 	opacity: .85;
