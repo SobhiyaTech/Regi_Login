@@ -20,6 +20,9 @@
 	--pale:   #f7fbfc; /* very light neutral matching pale blue */
 	--text-dark: #071319;
 	--text-light:#ffffff;
+	/* fallback success colors (adjust to your exact green if needed) */
+	--success-start: #2b6a4a;
+	--success-end:   #356f52;
 }
 body { background-color: var(--pale); color: var(--text-dark); }
 .card { border: 0; }
@@ -129,6 +132,14 @@ form .form-control.is-valid { border-color: var(--muted); }
 	color: var(--text-light);
 	background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
 	box-shadow: 0 6px 16px rgba(7,19,25,0.12);
+}
+
+/* Register button */
+.btn-register {
+  background: linear-gradient(90deg, var(--success-start), var(--success-end)) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45) !important;
 }
 
 /* Avatar and badge colors using the palette */
@@ -251,3 +262,17 @@ form .form-control.is-valid { border-color: var(--muted); }
 	cursor: not-allowed;
 	border-style: dashed;
 }
+
+/* Ensure any success alert uses the same tone */
+.alert-success,
+.registration-success,
+.profile-success {
+  background: linear-gradient(90deg, var(--cta-start), var(--cta-end)) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255,255,255,0.04) !important;
+  padding: 1rem 1.25rem !important;
+  border-radius: 8px !important;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35) !important;
+}
+/* ensure inline text/icons use correct contrast */
+.alert-success a, .alert-success strong { color: #ffffff !important; }
